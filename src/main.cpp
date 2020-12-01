@@ -1,16 +1,12 @@
-//g++ main.cpp board.cpp terminal.cpp -o output
-
-
+//g++ main.cpp board.cpp terminal.cpp game.cpp -o output
 #include <iostream>
-#include "board.h"
-#include "terminal.h"
+#include "game.h"
+
+
 
 using namespace std;
 
 int main(){
-    DrawBoard bord;
-    Terminal terminal;
-    terminal.ClearTerminal();
-    bord.CreateBoard();
-    bord.PrintBoard();
+    Game game;
+    game.RunGame();
 }
