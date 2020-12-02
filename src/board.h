@@ -9,6 +9,10 @@ class DrawBoard{
     public:
     void PrintBoard(void);
 
+    public:
+    int GetWidth();
+    int getHeight();
+
     private:
     std::string BoardString;
     const int width = 50;

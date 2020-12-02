@@ -1,7 +1,10 @@
 #pragma once
 
-class Keys{
-    public: enum Key {
+class Keys
+{
+public:
+    enum Key
+    {
         UP,
         DOWN,
         LEFT,

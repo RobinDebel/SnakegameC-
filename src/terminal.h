@@ -2,7 +2,8 @@
 
 using namespace std;
 
-class Terminal{
-    public:
+class Terminal
+{
+public:
     void ClearTerminal();
 };

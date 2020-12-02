@@ -6,17 +6,18 @@
 
 using namespace std;
 
-void Game::RunGame(){
+void Game::RunGame()
+{
     DrawBoard bord;
     Terminal terminal;
     Keys::Key key;
     bord.CreateBoard();
 
-    while(1)
+    while (1)
     {
-    // terminal.ClearTerminal();
-    bord.PrintBoard();
-    key = Keys::pressed_key();
-    cout << key <<endl;
+        terminal.ClearTerminal();
+        bord.PrintBoard();
+        key = Keys::pressed_key();
+        cout << key << endl;
     }
 }

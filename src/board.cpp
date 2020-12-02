@@ -3,14 +3,14 @@
 
 using namespace std;
 
-
-void DrawBoard::CreateBoard(){
-    for(int i = 0; i < height; i++)
+void DrawBoard::CreateBoard()
+{
+    for (int i = 0; i < height; i++)
     {
         BoardString += "#";
         for (int j = 0; j < width - 2; j++)
         {
-            if (i == 0 || i == height-1)
+            if (i == 0 || i == height - 1)
             {
                 BoardString += "#";
             }
@@ -23,6 +23,17 @@ void DrawBoard::CreateBoard(){
     }
 };
 
-void DrawBoard::PrintBoard(){
+void DrawBoard::PrintBoard()
+{
     cout << BoardString << endl;
 };
+
+int DrawBoard::GetWidth()
+{
+    return width;
+}
+
+int DrawBoard::getHeight()
+{
+    return height;
+}
