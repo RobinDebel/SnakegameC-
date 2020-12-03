@@ -1,7 +1,7 @@
 #include <iostream>
 
 int main(){
-    Game game;
+    // Game game;
 
     return 0;
 }
