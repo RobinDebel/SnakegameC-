@@ -1,6 +1,11 @@
 #pragma once
 
 #include <vector>
+#include "snake.h"
+#include "candy.h"
+#include "wall.h"
+#include "canvas.h"
+
 
 class Game{
     public:
