@@ -26,8 +26,8 @@ class Game {
     void check_for_collisions_with_candy(void);
     void process_keyboard_input(void);
     void tailupdate(void);
-    void addpiece_tail();
-    void deletelast_tail(int amount);
+    void addpiece_tail(void);
+    void deletelast_tail(void);
 
     
     private:
@@ -39,6 +39,8 @@ class Game {
     Canvas canvas;
 
     bool gameOver = false;
+    bool candyeaten = false;
+    long unsigned int tailsize = 3;
     const static int WIDTH = 60;
     const static int HEIGHT = 30;
 

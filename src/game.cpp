@@ -50,32 +50,7 @@ void Game::game_loop(void)
     }
 }
 
-void Game::tailupdate()
-{
-    
-    if (tails.size() >= 3)
-    {
-        deletelast_tail(1);
-        
-    }
-    addpiece_tail();
-    
 
-
-}
-
-void Game::addpiece_tail()
-{
-    tails.push_back(Tail(snake.x(),snake.y()));
-}
-
-void Game::deletelast_tail(int amount)
-{
-    for (int i=0; i < amount; i++)
-    {
-        tails.erase(tails.begin());
-    }
-}
 
 void Game::update(void)
 {   
@@ -125,7 +100,7 @@ void Game::check_for_collisions_with_walls(void)
 
 void Game::check_for_collisions_with_candy(void)
 {
-    bool candyeaten = false;
+    
     if(snake.x() == candy.x() && snake.y() == candy.y())
     {
         candyeaten = true;
@@ -146,4 +121,35 @@ void Game::process_keyboard_input(void) {
     case Controller::Key::LEFT: snake.left(); break;
     case Controller::Key::RIGHT: snake.right(); break;
   }
+}
+
+void Game::tailupdate(void)
+{
+    if (candyeaten)
+    {
+        tailsize += 3;
+        candyeaten = false;
+    }
+    
+    if (tails.size() >= tailsize)
+    {
+        deletelast_tail();
+        
+    }
+    addpiece_tail();
+    
+
+
+}
+
+void Game::addpiece_tail(void)
+{
+    tails.push_back(Tail(snake.x(),snake.y()));
+}
+
+void Game::deletelast_tail(void)
+{
+    
+    tails.erase(tails.begin());
+   
 }
