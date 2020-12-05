@@ -14,14 +14,15 @@ class Snake{
 
     public:
     void render(Canvas * canvas);
+    void update();
 
 
     private:
     int _x = 0;
     int _y = 0;
     
-    ;
-
+    
+    
     Direction direction = Direction::LEFT;
 
 };

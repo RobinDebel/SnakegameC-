@@ -1,4 +1,5 @@
 #include "game.h"
+#include "unistd.h"
 
 Game::Game(void)
     :snake(30, 15) {
@@ -6,7 +7,7 @@ Game::Game(void)
     create_walls();
     create_candy();
 
-    render();
+    game_loop();
 }
 
 void Game::create_walls(void)
@@ -28,15 +29,54 @@ void Game::create_candy(void)
     candy = Candy(10,15);
 }
 
-void Game::render(void)
+void Game::game_loop(void)
 {
+    while(!gameOver)
+    {
+        update();
+        render();
+        usleep(100'000); //1s
+    }
+}
+
+void Game::update(void)
+{
+    snake.update();
+
+    //collision with walls
+    for(auto wall : walls)
+    {
+        if(wall.x() == snake.x() && wall.y() == snake.y())
+        {
+            gameOver = true;
+        }
+    }
+
+    //collision with candy
+    bool candyeaten = false;
+    if(snake.x() == candy.x() && snake.y() == candy.y())
+    {
+        candyeaten = true;
+    }
+
+    if (candyeaten)
+    {
+        candy = 
+    }
+
+}
+
+void Game::render(void)
+{   
     canvas.clear();
+    snake.render(&canvas);
+
     for(auto wall : walls)
     {
         wall.render(&canvas);
     }
 
-    snake.render(&canvas);
+    
 
     candy.render(&canvas);
 
