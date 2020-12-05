@@ -33,12 +33,12 @@ void Game::render(void)
     canvas.clear();
     for(auto wall : walls)
     {
-        canvas.draw_symbol(wall.x(),wall.y(), '#');
+        wall.render(&canvas);
     }
 
-    canvas.draw_symbol(snake.x(),snake.y(), '>');
+    snake.render(&canvas);
 
-    canvas.draw_symbol(candy.x(),candy.y(), 'x');
+    candy.render(&canvas);
 
     canvas.output_to_terminal();
 }

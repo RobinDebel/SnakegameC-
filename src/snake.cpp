@@ -13,3 +13,7 @@ int Snake::x(){
 int Snake::y(){
     return _y;
 }
+
+void Snake::render(Canvas * canvas) {
+  canvas->draw_symbol(x(), y(), '>');
+}

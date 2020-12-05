@@ -1,5 +1,7 @@
 #pragma once
 
+#include "canvas.h"
+
 class Wall{
 
     public:
@@ -8,7 +10,7 @@ class Wall{
     public:
         int x(void);
         int y(void);
-
+        void render(Canvas * canvas);
 
     private:
     int _x = 0;

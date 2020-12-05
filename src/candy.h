@@ -1,5 +1,7 @@
 #pragma once
 
+#include "canvas.h"
+
 class Candy{
 
     public:
@@ -8,6 +10,9 @@ class Candy{
     public:
         int x(void);
         int y(void);
+    
+    public:
+    void render(Canvas * canvas);
 
 
     private:

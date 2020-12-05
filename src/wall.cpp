@@ -13,3 +13,9 @@ int Wall::x(){
 int Wall::y(){
     return _y;
 }
+
+void Wall::render(Canvas * canvas)
+{
+    canvas->draw_symbol(x(), y(), '#');
+
+}
