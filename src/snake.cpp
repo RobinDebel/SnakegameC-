@@ -1,18 +1,9 @@
 #include "snake.h"
 
 Snake::Snake(int x, int y)
-{
-_x = x;
-_y = y;
+ : Entity(x,y){
 }
 
-int Snake::x(){
-    return _x;
-}
-
-int Snake::y(){
-    return _y;
-}
 
 void Snake::render(Canvas * canvas) {
   switch(direction) 
@@ -28,10 +19,10 @@ void Snake::update(void)
 {
     switch(direction) 
     {
-        case Direction::LEFT: _x--; break;
-        case Direction::RIGHT: _x++; break;
-        case Direction::UP: _y--; break;
-        case Direction::DOWN: _y++; break;
+        case Direction::LEFT: Entity::move(x()-1,y()); break;
+        case Direction::RIGHT: Entity::move(x()+1,y()); break;
+        case Direction::UP: Entity::move(x(),y()-1); break;
+        case Direction::DOWN: Entity::move(x(),y()+1); break;
     }
 }
 

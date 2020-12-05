@@ -1,22 +1,15 @@
 #pragma once
 
 #include "canvas.h"
+#include "entity.h"
 
-class Candy{
+class Candy : public Entity {
 
     public:
         Candy(int x, int y);
-
-    public:
-        int x(void);
-        int y(void);
     
     public:
     void render(Canvas * canvas);
 
-
-    private:
-    int _x = 0;
-    int _y = 0;
 
 };

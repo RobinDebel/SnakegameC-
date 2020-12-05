@@ -39,7 +39,12 @@ void Game::game_loop(void)
     int counter = 0;
     while(!gameOver)
     {
-        update();
+        counter++;
+        if (counter >= 2)
+        {
+            update();
+            counter = 0;
+        }
         render();
         usleep(100'000); //1s
     }

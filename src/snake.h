@@ -2,15 +2,14 @@
 
 #include "direction.h"
 #include "canvas.h"
+#include "entity.h"
 
-class Snake{
+class Snake : public Entity{
 
     public:
         Snake(int x, int y);
 
-    public:
-        int x(void);
-        int y(void);
+
 
     public:
     void render(Canvas * canvas);
@@ -22,13 +21,6 @@ class Snake{
     void left(void);
     void right(void);
 
-
-    private:
-    int _x = 0;
-    int _y = 0;
-    
-    
-    
     Direction direction = Direction::LEFT;
 
 };

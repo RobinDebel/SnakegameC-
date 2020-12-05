@@ -1,17 +1,9 @@
 #include "wall.h"
 
 Wall::Wall(int x, int y)
-{
-_x = x;
-_y = y;
-}
+    : Entity(x,y)
+    {
 
-int Wall::x(){
-    return _x;
-}
-
-int Wall::y(){
-    return _y;
 }
 
 void Wall::render(Canvas * canvas)
