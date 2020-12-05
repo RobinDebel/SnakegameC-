@@ -1,5 +1,7 @@
 #pragma once
 
+#include "direction.h"
+
 class Snake{
 
     public:
@@ -13,5 +15,7 @@ class Snake{
     private:
     int _x = 0;
     int _y = 0;
+
+    Direction direction = Direction::LEFT;
 
 };
