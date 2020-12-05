@@ -26,18 +26,34 @@ void Snake::update(void)
     }
 }
 
-void Snake::down(void) {
-  direction = Direction::DOWN;
+void Snake::down(void) 
+{
+  if (direction != Direction::UP)
+  {
+    direction = Direction::DOWN;
+  }
+    
 }
 
-void Snake::up(void) {
-  direction = Direction::UP;
+void Snake::up(void) 
+{
+  if(direction != Direction::DOWN)
+  {
+    direction = Direction::UP;
+  }
 }
 
 void Snake::left(void) {
-  direction = Direction::LEFT;
+  if(direction != Direction::RIGHT)
+  {
+    direction = Direction::LEFT;
+  }
+  
 }
 
 void Snake::right(void) {
-  direction = Direction::RIGHT;
+    if(direction != Direction::LEFT)
+  {
+    direction = Direction::RIGHT;
+  }
 }
