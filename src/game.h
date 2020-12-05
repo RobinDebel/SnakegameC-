@@ -24,6 +24,7 @@ class Game {
     private:
     void check_for_collisions_with_walls(void);
     void check_for_collisions_with_candy(void);
+    void check_for_collisions_with_tail(void);
     void process_keyboard_input(void);
     void tailupdate(void);
     void addpiece_tail(void);
