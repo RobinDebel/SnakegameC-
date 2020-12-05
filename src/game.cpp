@@ -1,9 +1,14 @@
 #include "game.h"
 #include "unistd.h"
+#include <time.h>
+#include <stdlib.h>
+#include "controller.h"   // Keyboard input
+
 
 Game::Game(void)
     :snake(30, 15) {
 
+    srand(time(NULL));
     create_walls();
     create_candy();
 
@@ -26,11 +31,12 @@ void Game::create_walls(void)
 
 void Game::create_candy(void)
 {
-    candy = Candy(10,15);
+    candy = Candy(1+rand()%(WIDTH-2), 1+rand()%(HEIGHT-2));
 }
 
 void Game::game_loop(void)
 {
+    int counter = 0;
     while(!gameOver)
     {
         update();
@@ -40,11 +46,14 @@ void Game::game_loop(void)
 }
 
 void Game::update(void)
-{
+{   
+    process_keyboard_input();
+
     snake.update();
+    check_for_collisions_with_walls();
 
     //collision with walls
-    check_for_collisions_with_walls();
+    
 
     //collision with candy
     check_for_collisions_with_candy();
@@ -87,6 +96,17 @@ void Game::check_for_collisions_with_candy(void)
 
     if (candyeaten)
     {
-        candy = Candy(1,1);
+        candy = Candy(1+rand()%(WIDTH-2), 1+rand()%(HEIGHT-2));
     }
+}
+
+void Game::process_keyboard_input(void) {
+  Controller::Key pressedKey = Controller::get_key_press();
+
+  switch (pressedKey) {
+    case Controller::Key::DOWN: snake.down(); break;
+    case Controller::Key::UP: snake.up(); break;
+    case Controller::Key::LEFT: snake.left(); break;
+    case Controller::Key::RIGHT: snake.right(); break;
+  }
 }

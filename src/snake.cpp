@@ -34,3 +34,19 @@ void Snake::update(void)
         case Direction::DOWN: _y++; break;
     }
 }
+
+void Snake::down(void) {
+  direction = Direction::DOWN;
+}
+
+void Snake::up(void) {
+  direction = Direction::UP;
+}
+
+void Snake::left(void) {
+  direction = Direction::LEFT;
+}
+
+void Snake::right(void) {
+  direction = Direction::RIGHT;
+}

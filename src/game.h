@@ -23,6 +23,7 @@ class Game {
     private:
     void check_for_collisions_with_walls(void);
     void check_for_collisions_with_candy(void);
+    void process_keyboard_input(void);
 
     
     private:
