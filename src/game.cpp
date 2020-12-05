@@ -32,7 +32,15 @@ void Game::create_walls(void)
 
 void Game::create_candy(void)
 {
+    
     candy = Candy(1+rand()%(WIDTH-2), 1+rand()%(HEIGHT-2));
+    for(auto tail : tails)
+    {
+        while(tail.x() == candy.x() && tail.y() == tail.x())
+        {
+            candy = Candy(1+rand()%(WIDTH-2), 1+rand()%(HEIGHT-2));
+        }
+    }
 }
 
 void Game::game_loop(void)
