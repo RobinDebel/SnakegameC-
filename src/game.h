@@ -5,6 +5,7 @@
 #include "wall.h"
 #include "candy.h"
 #include "canvas.h"
+#include "tail.h"
 
 class Game {
 
@@ -24,12 +25,16 @@ class Game {
     void check_for_collisions_with_walls(void);
     void check_for_collisions_with_candy(void);
     void process_keyboard_input(void);
+    void tailupdate(void);
+    void addpiece_tail();
+    void deletelast_tail(int amount);
 
     
     private:
     Snake snake;
     Candy candy = Candy(1,1);
     std::vector<Wall> walls;
+    std::vector<Tail> tails;
 
     Canvas canvas;
 

@@ -50,10 +50,37 @@ void Game::game_loop(void)
     }
 }
 
+void Game::tailupdate()
+{
+    
+    if (tails.size() >= 3)
+    {
+        deletelast_tail(1);
+        
+    }
+    addpiece_tail();
+    
+
+
+}
+
+void Game::addpiece_tail()
+{
+    tails.push_back(Tail(snake.x(),snake.y()));
+}
+
+void Game::deletelast_tail(int amount)
+{
+    for (int i=0; i < amount; i++)
+    {
+        tails.erase(tails.begin());
+    }
+}
+
 void Game::update(void)
 {   
     process_keyboard_input();
-
+    tailupdate();
     snake.update();
     check_for_collisions_with_walls();
 
@@ -73,6 +100,11 @@ void Game::render(void)
     for(auto wall : walls)
     {
         wall.render(&canvas);
+    }
+
+    for(auto tail : tails)
+    {
+        tail.render(&canvas);
     }
 
     candy.render(&canvas);
