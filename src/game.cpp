@@ -44,25 +44,10 @@ void Game::update(void)
     snake.update();
 
     //collision with walls
-    for(auto wall : walls)
-    {
-        if(wall.x() == snake.x() && wall.y() == snake.y())
-        {
-            gameOver = true;
-        }
-    }
+    check_for_collisions_with_walls();
 
     //collision with candy
-    bool candyeaten = false;
-    if(snake.x() == candy.x() && snake.y() == candy.y())
-    {
-        candyeaten = true;
-    }
-
-    if (candyeaten)
-    {
-        candy = 
-    }
+    check_for_collisions_with_candy();
 
 }
 
@@ -76,9 +61,32 @@ void Game::render(void)
         wall.render(&canvas);
     }
 
-    
-
     candy.render(&canvas);
 
     canvas.output_to_terminal();
+}
+
+void Game::check_for_collisions_with_walls(void)
+{
+    for(auto wall : walls)
+    {
+        if(wall.x() == snake.x() && wall.y() == snake.y())
+        {
+            gameOver = true;
+        }
+    }
+}
+
+void Game::check_for_collisions_with_candy(void)
+{
+    bool candyeaten = false;
+    if(snake.x() == candy.x() && snake.y() == candy.y())
+    {
+        candyeaten = true;
+    }
+
+    if (candyeaten)
+    {
+        candy = Candy(1,1);
+    }
 }

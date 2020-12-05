@@ -19,6 +19,11 @@ class Game {
     void game_loop(void);
     void update(void);
     void render(void);
+
+    private:
+    void check_for_collisions_with_walls(void);
+    void check_for_collisions_with_candy(void);
+
     
     private:
     Snake snake;

@@ -15,7 +15,13 @@ int Snake::y(){
 }
 
 void Snake::render(Canvas * canvas) {
-  canvas->draw_symbol(x(), y(), '>');
+  switch(direction) 
+  {
+    case Direction::LEFT: canvas->draw_symbol(x(), y(), '<'); break;
+    case Direction::RIGHT: canvas->draw_symbol(x(), y(), '>'); break;
+    case Direction::UP: canvas->draw_symbol(x(), y(), '^'); break;
+    case Direction::DOWN: canvas->draw_symbol(x(), y(), 'v'); break;
+  }
 }
 
 void Snake::update(void)
