@@ -2,6 +2,7 @@
 #include "unistd.h"
 #include <time.h>
 #include <stdlib.h>
+#include <iostream>
 #include "controller.h"   // Keyboard input
 
 
@@ -46,7 +47,7 @@ void Game::game_loop(void)
             counter = 0;
         }
         render();
-        usleep(100'000); //1s
+        usleep(50'000); //1s
     }
 }
 
@@ -83,6 +84,8 @@ void Game::render(void)
     candy.render(&canvas);
 
     canvas.output_to_terminal();
+
+    std::cout << "Score: " << score << std::endl;
 }
 
 void Game::check_for_collisions_with_walls(void)
@@ -118,6 +121,7 @@ void Game::check_for_collisions_with_candy(void)
     if (candyeaten)
     {
         candy = Candy(1+rand()%(WIDTH-2), 1+rand()%(HEIGHT-2));
+        score++;
     }
 }
 

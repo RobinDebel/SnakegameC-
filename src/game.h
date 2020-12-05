@@ -42,6 +42,7 @@ class Game {
     bool gameOver = false;
     bool candyeaten = false;
     long unsigned int tailsize = 3;
+    unsigned int score = 0;
     const static int WIDTH = 60;
     const static int HEIGHT = 30;
 
