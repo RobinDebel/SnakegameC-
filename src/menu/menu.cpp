@@ -102,7 +102,7 @@ void Menu::keyInput(void)
 
 void Menu::updateMenu(void)
 {
-    switch(selection)
+    switch(cursor)
     {
         case 1:
         selection = 0;
