@@ -18,13 +18,14 @@ Menu::Menu(void)
             break;
             case 2:// instructions
             showInstructionMenu();
+            break;
+            case 3: //highscore
+            showHighscoreMenu();
+            break;
+            
         }
         usleep(100'000); //100ms
     }
-    
-    
-
-
 };
 
 
@@ -68,13 +69,16 @@ void Menu::updateMenu(void)
         switch(cursor)
         {
             case 1:
-            selection = 0;
+                selection = 0;
             break;
             case 2:
-            selection = 2;
+                selection = 2;
             break;
             case 3:
-            std::exit(EXIT_SUCCESS);
+                selection = 3;
+            break;
+            case 4:
+                std::exit(EXIT_SUCCESS);
             break;
         }
     }else
@@ -107,25 +111,25 @@ void Menu::showSelectionMenu(void)
       case 1:
       stringhelper.printSelectedText("Play");
       stringhelper.printText("Instructions");
-      stringhelper.printText("Highscore");
+      stringhelper.printText("The Highscore");
       stringhelper.printText("Exit");
       break;
       case 2:
       stringhelper.printText("Play");
       stringhelper.printSelectedText("Instructions");
-      stringhelper.printText("Highscore");
+      stringhelper.printText("The Highscore");
       stringhelper.printText("Exit");
       break;
       case 3:
       stringhelper.printText("Play");
       stringhelper.printText("Instructions");
-      stringhelper.printSelectedText("Highscore");
+      stringhelper.printSelectedText("The Highscore");
       stringhelper.printText("Exit");
       break;
       case 4:
       stringhelper.printText("Play");
       stringhelper.printText("Instructions");
-      stringhelper.printText("Highscore");
+      stringhelper.printText("The Highscore");
       stringhelper.printSelectedText("Exit");
       break;
     }
@@ -157,5 +161,14 @@ void Menu::showInstructionMenu(void)
     stringhelper.printText("And the delicious looks like this: 'x'");
     stringhelper.printEmptyLine();
     stringhelper.printSelectedText("Go back to the main menu by pressing enter!");
+    stringhelper.printFullLine();
+}
+
+void Menu::showHighscoreMenu(void)
+{
+    stringhelper.printFullLine();
+    stringhelper.printEmptyLine();
+    stringhelper.printText("Highscore = 100");
+    stringhelper.printEmptyLine();
     stringhelper.printFullLine();
 }

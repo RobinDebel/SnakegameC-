@@ -15,6 +15,7 @@ class Menu
      void keyInput(void);
      void updateMenu(void);
      void showInstructionMenu(void);
+     void showHighscoreMenu(void);
 
     private:
     unsigned int cursor = 1;
