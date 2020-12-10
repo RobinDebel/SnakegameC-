@@ -6,7 +6,7 @@
 
 int main(){
     Menu menu;
-    Game game;
+    //Game game;
 
     return 0;
 }

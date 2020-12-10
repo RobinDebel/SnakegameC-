@@ -66,7 +66,7 @@ Key get_key_press(void) {
     if (kbhit()) {
       // Arrow key are two codes: 27 91 and keycode
       int key = getch();
-      // std::cout << "Got key pressed: " << key << std::endl;
+      //std::cout << "Got key pressed: " << key << std::endl;
       if (key == 27 && getch() == 91) {
         key = getch();
         // std::cout << "Got Third key pressed: " << key << std::endl;
