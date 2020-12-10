@@ -32,15 +32,20 @@ void Game::create_walls(void)
 
 void Game::create_candy(void)
 {
-    
     candy = Candy(1+rand()%(WIDTH-2), 1+rand()%(HEIGHT-2));
-    for(auto tail : tails)
-    {
-        while(tail.x() == candy.x() && tail.y() == tail.x())
+    bool candyclear = true;
+    do{
+        candyclear = true;
+        for(auto tail : tails)
         {
-            candy = Candy(1+rand()%(WIDTH-2), 1+rand()%(HEIGHT-2));
+            if(tail.x() == candy.x() && tail.y() == tail.x())
+            {
+                candyclear = false;
+                candy = Candy(1+rand()%(WIDTH-2), 1+rand()%(HEIGHT-2));
+            }
         }
-    }
+    }while(!candyclear);
+  
 }
 
 void Game::game_loop(void)
