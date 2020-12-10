@@ -12,12 +12,14 @@ Menu::Menu(void)
         keyInput();
         switch(selection)
         {   
-            case 1:
+            case 1://main menu
             showStartMenu();
             showSelectionMenu();
             break;
+            case 2:// instructions
+            showInstructionMenu();
         }
-        usleep(100'000); //1s
+        usleep(100'000); //100ms
     }
     
     
@@ -26,47 +28,6 @@ Menu::Menu(void)
 };
 
 
-void Menu::showStartMenu(void)
-{
-    stringhelper.printFullLine();
-    stringhelper.printEmptyLine();
-    stringhelper.printText("Welcome");
-    stringhelper.printText("to the wonderfull world of snake.");
-    stringhelper.printEmptyLine();
-    stringhelper.printFullLine();
-    stringhelper.printEmptyLine();
-    stringhelper.printText("You can select your choice");
-    stringhelper.printText("by using the up and down key.");
-    stringhelper.printText("Select choice by pressing Enter.");
-    stringhelper.printEmptyLine();
-    stringhelper.printEmptyLine();
-}
-
-void Menu::showSelectionMenu(void)
-{
-  switch(cursor)
-  {
-      case 1:
-      stringhelper.printSelectedText("Play");
-      stringhelper.printText("Instructions");
-      stringhelper.printText("Exit");
-      break;
-      case 2:
-      stringhelper.printText("Play");
-      stringhelper.printSelectedText("Instructions");
-      stringhelper.printText("Exit");
-      break;
-      case 3:
-      stringhelper.printText("Play");
-      stringhelper.printText("Instructions");
-      stringhelper.printSelectedText("Exit");
-      break;
-    }
-    stringhelper.printEmptyLine();
-    stringhelper.printFullLine();
-
-}
-
 void Menu::keyInput(void)
 {
     Controller::Key pressedKey = Controller::get_key_press();
@@ -74,7 +35,7 @@ void Menu::keyInput(void)
     switch(pressedKey)
     {
         case Controller::Key::DOWN: 
-            if(cursor == 3)
+            if(cursor == 4)
             {
                 cursor = 1;
             }else
@@ -86,7 +47,7 @@ void Menu::keyInput(void)
         case Controller::Key::UP:
             if(cursor == 1)
             {
-                cursor = 3;
+                cursor = 4;
             }else
             {
                 cursor--;
@@ -102,16 +63,99 @@ void Menu::keyInput(void)
 
 void Menu::updateMenu(void)
 {
-    switch(cursor)
+    if (selection == 1)
     {
-        case 1:
-        selection = 0;
-        break;
-        case 2:
-
-        break;
-        case 3:
-        std::exit(EXIT_SUCCESS);
-        break;
+        switch(cursor)
+        {
+            case 1:
+            selection = 0;
+            break;
+            case 2:
+            selection = 2;
+            break;
+            case 3:
+            std::exit(EXIT_SUCCESS);
+            break;
+        }
+    }else
+    {
+        selection = 1;
     }
+
+}
+
+void Menu::showStartMenu(void)
+{
+    stringhelper.printFullLine();
+    stringhelper.printEmptyLine();
+    stringhelper.printText("Welcome");
+    stringhelper.printText("to the wonderfull world of snake.");
+    stringhelper.printEmptyLine();
+    stringhelper.printFullLine();
+    stringhelper.printEmptyLine();
+    stringhelper.printText("You can select your choice by");
+    stringhelper.printText("using the up and down key.");
+    stringhelper.printText("Select your choice by pressing Enter.");
+    stringhelper.printEmptyLine();
+    stringhelper.printEmptyLine();
+}
+
+void Menu::showSelectionMenu(void)
+{
+  switch(cursor)
+  {
+      case 1:
+      stringhelper.printSelectedText("Play");
+      stringhelper.printText("Instructions");
+      stringhelper.printText("Highscore");
+      stringhelper.printText("Exit");
+      break;
+      case 2:
+      stringhelper.printText("Play");
+      stringhelper.printSelectedText("Instructions");
+      stringhelper.printText("Highscore");
+      stringhelper.printText("Exit");
+      break;
+      case 3:
+      stringhelper.printText("Play");
+      stringhelper.printText("Instructions");
+      stringhelper.printSelectedText("Highscore");
+      stringhelper.printText("Exit");
+      break;
+      case 4:
+      stringhelper.printText("Play");
+      stringhelper.printText("Instructions");
+      stringhelper.printText("Highscore");
+      stringhelper.printSelectedText("Exit");
+      break;
+    }
+    stringhelper.printEmptyLine();
+    stringhelper.printFullLine();
+
+}
+
+void Menu::showInstructionMenu(void)
+{
+    stringhelper.printFullLine();
+    stringhelper.printEmptyLine();
+    stringhelper.printText("Instructions:");
+    stringhelper.printEmptyLine();
+    stringhelper.printFullLine();
+    stringhelper.printEmptyLine();
+    stringhelper.printText("You are a hungry snake who loves eating candy.");
+    stringhelper.printText("Ofcourse eating candy makes you get bigger.");
+    stringhelper.printText("Running the snake into his own tail");
+    stringhelper.printText("or the wall will make him die");
+    stringhelper.printText("Try to make the snake as big as you possibly can!");
+    stringhelper.printEmptyLine();
+    stringhelper.printFullLine();
+    stringhelper.printEmptyLine();
+    stringhelper.printText("You can control the snake by using the arrow keys");
+    stringhelper.printEmptyLine();
+    stringhelper.printText("The walls looks like this: '#'");
+    stringhelper.printText("The snake like this: '<00'");
+    stringhelper.printText("And the delicious looks like this: 'x'");
+    stringhelper.printEmptyLine();
+    stringhelper.printSelectedText("Go back to the main menu by pressing enter!");
+    stringhelper.printFullLine();
 }

@@ -14,9 +14,10 @@ class Menu
      void showSelectionMenu(void);
      void keyInput(void);
      void updateMenu(void);
+     void showInstructionMenu(void);
 
     private:
-    unsigned int cursor = 2;
+    unsigned int cursor = 1;
     unsigned int selection = 1;
     int width = 60;
     Stringhelper stringhelper = Stringhelper(width); 
