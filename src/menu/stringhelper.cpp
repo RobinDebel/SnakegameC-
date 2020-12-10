@@ -47,3 +47,9 @@ void Stringhelper::printText(std::string text)
     std::cout << "#" << std::endl;
 
 }
+
+void Stringhelper::printSelectedText(std::string text)
+{
+    text = "--" + text + "--";
+    printText(text);
+}

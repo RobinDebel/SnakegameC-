@@ -12,11 +12,14 @@ class Menu
     public:
      void showStartMenu(void);
      void showSelectionMenu(void);
+     void keyInput(void);
+     void updateMenu(void);
 
     private:
-     int width = 40;
-     
-     Stringhelper stringhelper = Stringhelper(width); 
+    unsigned int cursor = 2;
+    unsigned int selection = 1;
+    int width = 60;
+    Stringhelper stringhelper = Stringhelper(width); 
      
 
 };

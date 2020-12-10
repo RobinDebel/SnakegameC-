@@ -23,7 +23,6 @@ void Canvas::draw_symbol(int x, int y, char symbol)
 
 void Canvas::output_to_terminal(void) {
   system("clear");
-  std::cout << "Snake field ..." << std::endl;
   for (int y = 0; y < HEIGHT; y++) {
     for (int x = 0; x < WIDTH; x++) {
       std::cout << screen[x][y];
