@@ -207,7 +207,7 @@ void Game::ask_username(void)
     stringhelper.printEmptyLine();
     stringhelper.printSelectedText("Game Over");
     stringhelper.printEmptyLine();
-    stringhelper.printText("Please give  a nickname to be added on the scoreboard.");
+    stringhelper.printText("Please give a nickname to be added on the scoreboard.");
     stringhelper.printEmptyLine();
     stringhelper.printFullLine();
     std::cout << "\n        Nickname: ";
