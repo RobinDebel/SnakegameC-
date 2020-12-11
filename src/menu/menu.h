@@ -16,11 +16,14 @@ class Menu
      void updateMenu(void);
      void showInstructionMenu(void);
      void showHighscoreMenu(void);
+     void readHighscoresFile(void);
 
     private:
     unsigned int cursor = 1;
     unsigned int selection = 1;
+    bool fullscore = false;
     int width = 60;
+    std::vector<std::string> topscores;
     Stringhelper stringhelper = Stringhelper(width); 
      
 

@@ -1,33 +1,37 @@
 #include "menu.h"
 #include <iostream>
+#include <fstream>
 #include "unistd.h"
 #include "../game.h"
 #include "../controller.h"   // Keyboard input
-// to exit std::exit(EXIT_SUCCESS);
 
 Menu::Menu(void)
 {
-    while (selection > 0)
-    {
-        system("clear");
-        keyInput();
-        switch(selection)
-        {   
-            case 1://main menu
-            showStartMenu();
-            showSelectionMenu();
-            break;
-            case 2:// instructions
-            showInstructionMenu();
-            break;
-            case 3: //highscore
-            showHighscoreMenu();
-            break;
-            
+    while(true){
+        readHighscoresFile();
+        while (selection > 0)
+        {
+            system("clear");
+            keyInput();
+            switch(selection)
+            {   
+                case 1://main menu
+                showStartMenu();
+                showSelectionMenu();
+                break;
+                case 2:// instructions
+                showInstructionMenu();
+                break;
+                case 3: //highscore
+                showHighscoreMenu();
+                break;
+                
+            }
+            usleep(100'000); //100ms
         }
-        usleep(100'000); //100ms
+        Game game;
+        selection = 1;
     }
-    Game game;
 };
 
 
@@ -55,10 +59,16 @@ void Menu::keyInput(void)
             {
                 cursor--;
             }
+
+            if(selection == 3)
+            {
+                fullscore = true;
+            }
          break;
 
          case Controller::Key::ENTER:
             updateMenu();
+            fullscore = false;
          break;
 
     }
@@ -113,25 +123,25 @@ void Menu::showSelectionMenu(void)
       case 1:
       stringhelper.printSelectedText("Play");
       stringhelper.printText("Instructions");
-      stringhelper.printText("The Highscore");
+      stringhelper.printText("Highscores");
       stringhelper.printText("Exit");
       break;
       case 2:
       stringhelper.printText("Play");
       stringhelper.printSelectedText("Instructions");
-      stringhelper.printText("The Highscore");
+      stringhelper.printText("Highscores");
       stringhelper.printText("Exit");
       break;
       case 3:
       stringhelper.printText("Play");
       stringhelper.printText("Instructions");
-      stringhelper.printSelectedText("The Highscore");
+      stringhelper.printSelectedText("Highscores");
       stringhelper.printText("Exit");
       break;
       case 4:
       stringhelper.printText("Play");
       stringhelper.printText("Instructions");
-      stringhelper.printText("The Highscore");
+      stringhelper.printText("Highscores");
       stringhelper.printSelectedText("Exit");
       break;
     }
@@ -151,7 +161,7 @@ void Menu::showInstructionMenu(void)
     stringhelper.printText("You are a hungry snake who loves eating candy.");
     stringhelper.printText("Ofcourse eating candy makes you get bigger.");
     stringhelper.printText("Running the snake into his own tail");
-    stringhelper.printText("or the wall will make him die");
+    stringhelper.printText("or the wall will make him die.");
     stringhelper.printText("Try to make the snake as big as you possibly can!");
     stringhelper.printEmptyLine();
     stringhelper.printFullLine();
@@ -160,7 +170,7 @@ void Menu::showInstructionMenu(void)
     stringhelper.printEmptyLine();
     stringhelper.printText("The walls looks like this: '#'");
     stringhelper.printText("The snake like this: '<OOOOO'");
-    stringhelper.printText("And the delicious looks like this: 'x'");
+    stringhelper.printText("And the delicious candy looks like this: 'x'");
     stringhelper.printEmptyLine();
     stringhelper.printSelectedText("Go back to the main menu by pressing enter!");
     stringhelper.printFullLine();
@@ -168,14 +178,51 @@ void Menu::showInstructionMenu(void)
 
 void Menu::showHighscoreMenu(void)
 {
+    int count = 0;
     stringhelper.printFullLine();
     stringhelper.printEmptyLine();
-    stringhelper.printText("Highscore = 100");
+    if(!fullscore)
+    {
+    stringhelper.printText("The top 3 best scores are: ");
+    }else
+    {
+        stringhelper.printText("All scores: ");
+    }
+    
+    stringhelper.printEmptyLine();
+    while(!fullscore && count < 3)
+    {
+        stringhelper.printText(topscores[count]);
+        count++;
+    }
+    while(fullscore && count <= topscores.size())
+    {
+        stringhelper.printText(topscores[count]);
+        count++;
+    }
     stringhelper.printEmptyLine();
     stringhelper.printFullLine();
     stringhelper.printEmptyLine();
-    stringhelper.printSelectedText("Go back to the main menu by pressing enter!");
+    if(!fullscore)
+    {
+        stringhelper.printSelectedText("Show all scores by pressing arrowkey up.");
+    }
+    stringhelper.printSelectedText("Go back by pressing enter!");
     stringhelper.printEmptyLine();
     stringhelper.printFullLine();
 
+}
+
+void Menu::readHighscoresFile(void)
+{
+    
+    std::ifstream file;
+    file.open("scoreboard.txt");
+    std::string input;
+    int count = 1;
+    while (std::getline(file, input))
+    {
+        topscores.push_back(std::to_string(count) + ": " + input);
+        count++;
+    }
 }

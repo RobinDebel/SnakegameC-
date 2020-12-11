@@ -191,15 +191,19 @@ void Game::sort_scores(void)  // this uses linux commands to sort the scoreboard
 void Game::add_score(void)
 {
     ask_username();
+
+    
     std::fstream file("scoreboard.txt", std::ios::app);
     file << username << " " << score << std::endl;
     file.close();
+
     sort_scores();
 }
 
 void Game::ask_username(void)
 {
     system("clear");
-    std::cout << "Please give  a nickname if you wish to \nbe added to the scoreboard if not just press enter\nNickname: ";
+    std::cout << "Game Over\n" << std::endl;
+    std::cout << "Please give  a nickname to be added on the scoreboard.\nNickname: ";
     std::cin >> username;
 }
