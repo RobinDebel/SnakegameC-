@@ -34,18 +34,6 @@ void Game::create_walls(void)
 void Game::create_candy(void)
 {
     candy = Candy(1+rand()%(WIDTH-2), 1+rand()%(HEIGHT-2));
-    bool candyclear = true;
-    do{
-        candyclear = true;
-        for(auto tail : tails)
-        {
-            if(tail.x() == candy.x() && tail.y() == tail.x())
-            {
-                candyclear = false;
-                candy = Candy(1+rand()%(WIDTH-2), 1+rand()%(HEIGHT-2));
-            }
-        }
-    }while(!candyclear);
   
 }
 
@@ -137,7 +125,19 @@ void Game::check_for_collisions_with_candy(void)
     if (candyeaten)
     {
         candy = Candy(1+rand()%(WIDTH-2), 1+rand()%(HEIGHT-2));
-        score++;
+        bool candyclear = true;
+        do{
+            candyclear = true;
+            for(auto tail : tails)
+            {
+                if(tail.x() == candy.x() && tail.y() == tail.x())
+                {
+                    candyclear = false;
+                    candy = Candy(1+rand()%(WIDTH-2), 1+rand()%(HEIGHT-2));
+                }
+            }
+        }while(!candyclear);
+    score++;
     }
 }
 
