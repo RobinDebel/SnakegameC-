@@ -6,6 +6,7 @@
 #include "candy.h"
 #include "canvas.h"
 #include "tail.h"
+#include <string>
 
 class Game {
 
@@ -29,13 +30,21 @@ class Game {
     void tailupdate(void);
     void addpiece_tail(void);
     void deletelast_tail(void);
-
     
     private:
+    void ask_username(void);
+    void sort_scores(void);
+    void add_score(void);
+    
+    
+    private:
+    
     Snake snake;
     Candy candy = Candy(1,1);
+    std::string username = "";
     std::vector<Wall> walls;
     std::vector<Tail> tails;
+    
 
     Canvas canvas;
 

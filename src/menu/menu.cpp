@@ -1,6 +1,7 @@
 #include "menu.h"
 #include <iostream>
 #include "unistd.h"
+#include "../game.h"
 #include "../controller.h"   // Keyboard input
 // to exit std::exit(EXIT_SUCCESS);
 
@@ -26,6 +27,7 @@ Menu::Menu(void)
         }
         usleep(100'000); //100ms
     }
+    Game game;
 };
 
 
@@ -157,7 +159,7 @@ void Menu::showInstructionMenu(void)
     stringhelper.printText("You can control the snake by using the arrow keys");
     stringhelper.printEmptyLine();
     stringhelper.printText("The walls looks like this: '#'");
-    stringhelper.printText("The snake like this: '<00'");
+    stringhelper.printText("The snake like this: '<OOOOO'");
     stringhelper.printText("And the delicious looks like this: 'x'");
     stringhelper.printEmptyLine();
     stringhelper.printSelectedText("Go back to the main menu by pressing enter!");
@@ -171,4 +173,9 @@ void Menu::showHighscoreMenu(void)
     stringhelper.printText("Highscore = 100");
     stringhelper.printEmptyLine();
     stringhelper.printFullLine();
+    stringhelper.printEmptyLine();
+    stringhelper.printSelectedText("Go back to the main menu by pressing enter!");
+    stringhelper.printEmptyLine();
+    stringhelper.printFullLine();
+
 }

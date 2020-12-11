@@ -3,8 +3,8 @@
 #include <time.h>
 #include <stdlib.h>
 #include <iostream>
+#include <fstream>
 #include "controller.h"   // Keyboard input
-
 
 Game::Game(void)
     :snake(30, 15) {
@@ -14,6 +14,7 @@ Game::Game(void)
     create_candy();
 
     game_loop();
+    add_score(); 
 }
 
 void Game::create_walls(void)
@@ -60,7 +61,9 @@ void Game::game_loop(void)
             counter = 0;
         }
         render();
+        
         usleep(50'000); //1s
+        
     }
 }
 
@@ -178,4 +181,25 @@ void Game::deletelast_tail(void)
     
     tails.erase(tails.begin());
    
+}
+
+void Game::sort_scores(void)  // this uses linux commands to sort the scoreboard.txt file
+{
+    system("sort -nrk 2 scoreboard.txt > scoreboard2.txt && rm scoreboard.txt && mv scoreboard2.txt scoreboard.txt");
+ }
+
+void Game::add_score(void)
+{
+    ask_username();
+    std::fstream file("scoreboard.txt", std::ios::app);
+    file << username << " " << score << std::endl;
+    file.close();
+    sort_scores();
+}
+
+void Game::ask_username(void)
+{
+    system("clear");
+    std::cout << "Please give  a nickname if you wish to \nbe added to the scoreboard if not just press enter\nNickname: ";
+    std::cin >> username;
 }
