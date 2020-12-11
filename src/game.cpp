@@ -203,7 +203,13 @@ void Game::add_score(void)
 void Game::ask_username(void)
 {
     system("clear");
-    std::cout << "Game Over\n" << std::endl;
-    std::cout << "Please give  a nickname to be added on the scoreboard.\nNickname: ";
+    stringhelper.printFullLine();
+    stringhelper.printEmptyLine();
+    stringhelper.printSelectedText("Game Over");
+    stringhelper.printEmptyLine();
+    stringhelper.printText("Please give  a nickname to be added on the scoreboard.");
+    stringhelper.printEmptyLine();
+    stringhelper.printFullLine();
+    std::cout << "\n        Nickname: ";
     std::cin >> username;
 }

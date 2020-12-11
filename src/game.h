@@ -7,6 +7,8 @@
 #include "canvas.h"
 #include "tail.h"
 #include <string>
+#include "menu/stringhelper.h"
+
 
 class Game {
 
@@ -54,6 +56,7 @@ class Game {
     unsigned int score = 0;
     const static int WIDTH = 60;
     const static int HEIGHT = 30;
+    Stringhelper stringhelper = Stringhelper(WIDTH);
 
 
 };
