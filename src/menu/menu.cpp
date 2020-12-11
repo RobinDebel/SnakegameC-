@@ -190,12 +190,12 @@ void Menu::showHighscoreMenu(void)
     }
     
     stringhelper.printEmptyLine();
-    while(!fullscore && count < 3)
+    while(!fullscore && count < 3 && topscores.size() > count)
     {
         stringhelper.printText(topscores[count]);
         count++;
     }
-    while(fullscore && count <= topscores.size())
+    while(fullscore && count <= topscores.size() && topscores.size() > count)
     {
         stringhelper.printText(topscores[count]);
         count++;
