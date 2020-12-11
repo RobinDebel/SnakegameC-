@@ -21,6 +21,7 @@ class Menu
     private:
     unsigned int cursor = 1;
     unsigned int selection = 1;
+    int count = 0;
     bool fullscore = false;
     int width = 60;
     std::vector<std::string> topscores;

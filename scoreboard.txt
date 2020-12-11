@@ -1,5 +1,3 @@
-Dirk 12
+Robin 12
 Aaron 8
-Belle 7
-Seppe 2
-Robin 0
+Seppe 7

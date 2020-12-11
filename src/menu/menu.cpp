@@ -178,7 +178,7 @@ void Menu::showInstructionMenu(void)
 
 void Menu::showHighscoreMenu(void)
 {
-    int count = 0;
+    count = 0;
     stringhelper.printFullLine();
     stringhelper.printEmptyLine();
     if(!fullscore)
@@ -215,7 +215,7 @@ void Menu::showHighscoreMenu(void)
 
 void Menu::readHighscoresFile(void)
 {
-    
+    topscores.clear();
     std::ifstream file;
     file.open("scoreboard.txt");
     std::string input;
