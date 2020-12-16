@@ -25,6 +25,9 @@ Menu::Menu(void)
                 case 3: //highscore
                 showHighscoreMenu();
                 break;
+                case 4:
+                showSettingsMenu();
+                break;
                 
             }
             usleep(100'000); //100ms
@@ -42,7 +45,7 @@ void Menu::keyInput(void)
     switch(pressedKey)
     {
         case Controller::Key::DOWN: 
-            if(cursor == 4)
+            if(cursor == 5)
             {
                 cursor = 1;
             }else
@@ -54,7 +57,7 @@ void Menu::keyInput(void)
         case Controller::Key::UP:
             if(cursor == 1)
             {
-                cursor = 4;
+                cursor = 5;
             }else
             {
                 cursor--;
@@ -90,6 +93,9 @@ void Menu::updateMenu(void)
                 selection = 3;
             break;
             case 4:
+                selection = 4;
+            break;
+            case 5:
                 std::exit(EXIT_SUCCESS);
             break;
         }
@@ -124,24 +130,35 @@ void Menu::showSelectionMenu(void)
       stringhelper.printSelectedText("Play");
       stringhelper.printText("Instructions");
       stringhelper.printText("Highscores");
+      stringhelper.printText("Settings");
       stringhelper.printText("Exit");
       break;
       case 2:
       stringhelper.printText("Play");
       stringhelper.printSelectedText("Instructions");
       stringhelper.printText("Highscores");
+      stringhelper.printText("Settings");
       stringhelper.printText("Exit");
       break;
       case 3:
       stringhelper.printText("Play");
       stringhelper.printText("Instructions");
       stringhelper.printSelectedText("Highscores");
+      stringhelper.printText("Settings");
       stringhelper.printText("Exit");
       break;
       case 4:
       stringhelper.printText("Play");
       stringhelper.printText("Instructions");
       stringhelper.printText("Highscores");
+      stringhelper.printSelectedText("Settings");
+      stringhelper.printText("Exit");
+      break;
+      case 5:
+      stringhelper.printText("Play");
+      stringhelper.printText("Instructions");
+      stringhelper.printText("Highscores");
+      stringhelper.printText("Settings");
       stringhelper.printSelectedText("Exit");
       break;
     }
@@ -174,6 +191,11 @@ void Menu::showInstructionMenu(void)
     stringhelper.printEmptyLine();
     stringhelper.printSelectedText("Go back to the main menu by pressing enter!");
     stringhelper.printFullLine();
+}
+
+void Menu::showSettingsMenu(void)
+{
+    stringhelper.printText("You smell");
 }
 
 void Menu::showHighscoreMenu(void)

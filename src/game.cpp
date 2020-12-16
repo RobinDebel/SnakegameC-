@@ -194,7 +194,7 @@ void Game::deletelast_tail(void)
 void Game::sort_scores(void)  // this uses linux commands to sort the scoreboard.txt file
 {
     system("sort -nrk 2 scoreboard.txt > scoreboard2.txt && rm scoreboard.txt && mv scoreboard2.txt scoreboard.txt");
- }
+}
 
 void Game::add_score(void)
 {

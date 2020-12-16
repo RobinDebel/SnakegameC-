@@ -17,6 +17,7 @@ class Menu
      void showInstructionMenu(void);
      void showHighscoreMenu(void);
      void readHighscoresFile(void);
+     void showSettingsMenu(void);
 
     private:
     unsigned int cursor = 1;
