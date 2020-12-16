@@ -13,7 +13,7 @@
 class Game {
 
     public:
-    Game(void);
+    Game(bool usefile);
 
     private:
     void create_walls(void);
@@ -53,6 +53,7 @@ class Game {
 
     bool gameOver = false;
     bool candyeaten = false;
+    bool usefilemap = false;
     long unsigned int tailsize = 3;
     unsigned int score = 0;
     const static int WIDTH = 60;

@@ -32,7 +32,7 @@ Menu::Menu(void)
             }
             usleep(100'000); //100ms
         }
-        Game game;
+        Game game(usefilemap);
         selection = 1;
     }
 };
@@ -66,6 +66,10 @@ void Menu::keyInput(void)
             if(selection == 3)
             {
                 fullscore = true;
+            }
+            if(selection == 4)
+            {
+                usefilemap = !usefilemap;
             }
          break;
 
@@ -195,7 +199,23 @@ void Menu::showInstructionMenu(void)
 
 void Menu::showSettingsMenu(void)
 {
-    stringhelper.printText("You smell");
+    stringhelper.printFullLine();
+    stringhelper.printEmptyLine();
+    stringhelper.printText("Settings:");
+    stringhelper.printEmptyLine();
+    stringhelper.printFullLine();
+    stringhelper.printEmptyLine();
+    stringhelper.printText("Use arrow up key to switch choice.");
+    stringhelper.printEmptyLine();
+    if(usefilemap)
+    {
+        stringhelper.printText("Use user map = on");
+    }else
+    {
+        stringhelper.printText("Use user map = false");
+    }
+    stringhelper.printEmptyLine();
+    stringhelper.printFullLine();
 }
 
 void Menu::showHighscoreMenu(void)

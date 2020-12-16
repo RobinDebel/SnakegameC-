@@ -6,9 +6,10 @@
 #include <fstream>
 #include "controller.h"   // Keyboard input
 
-Game::Game(void)
+Game::Game(bool usefile)
     :snake(30, 15) {
 
+    usefilemap = usefile;
     srand(time(NULL));
     create_walls();
     create_candy();
@@ -19,7 +20,7 @@ Game::Game(void)
 
 void Game::create_walls(void)
 {
-    if(false)
+    if(!usefilemap)
     {
         for(int y = 0; y < HEIGHT; y++)
         {
