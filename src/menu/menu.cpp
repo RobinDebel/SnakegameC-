@@ -205,7 +205,7 @@ void Menu::showSettingsMenu(void)
     stringhelper.printEmptyLine();
     stringhelper.printFullLine();
     stringhelper.printEmptyLine();
-    stringhelper.printText("Use arrow up key to switch choice.");
+    stringhelper.printSelectedText("Change choice by pressing arrowkey up.");
     stringhelper.printEmptyLine();
     if(usefilemap)
     {
@@ -214,6 +214,8 @@ void Menu::showSettingsMenu(void)
     {
         stringhelper.printText("Use user map = false");
     }
+    stringhelper.printEmptyLine();
+    stringhelper.printSelectedText("Go back to the main menu by pressing enter!");
     stringhelper.printEmptyLine();
     stringhelper.printFullLine();
 }
@@ -249,7 +251,7 @@ void Menu::showHighscoreMenu(void)
     {
         stringhelper.printSelectedText("Show all scores by pressing arrowkey up.");
     }
-    stringhelper.printSelectedText("Go back by pressing enter!");
+    stringhelper.printSelectedText("Go back to the main menu by pressing enter!");
     stringhelper.printEmptyLine();
     stringhelper.printFullLine();
 
