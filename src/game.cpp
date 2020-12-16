@@ -43,6 +43,8 @@ void Game::create_walls(void)
 void Game::create_candy(void)
 {
     candy = Candy(1+rand()%(WIDTH-2), 1+rand()%(HEIGHT-2));
+    check_candy_spawn_wall_tail();
+
   
 }
 
@@ -133,21 +135,37 @@ void Game::check_for_collisions_with_candy(void)
 
     if (candyeaten)
     {
-        candy = Candy(1+rand()%(WIDTH-2), 1+rand()%(HEIGHT-2));
-        bool candyclear = true;
-        do{
-            candyclear = true;
-            for(auto tail : tails)
-            {
-                if(tail.x() == candy.x() && tail.y() == tail.x())
-                {
-                    candyclear = false;
-                    candy = Candy(1+rand()%(WIDTH-2), 1+rand()%(HEIGHT-2));
-                }
-            }
-        }while(!candyclear);
+    check_candy_spawn_wall_tail();
     score++;
     }
+}
+
+void Game::check_candy_spawn_wall_tail(void)
+{
+    
+    
+    candy = Candy(1+rand()%(WIDTH-2), 1+rand()%(HEIGHT-2));
+    bool candyclear = true;
+    do{
+        candyclear = true;
+        for(auto tail : tails)
+        {
+            if(tail.x() == candy.x() && tail.y() == candy.y())
+            {
+                candyclear = false;
+                candy = Candy(1+rand()%(WIDTH-2), 1+rand()%(HEIGHT-2));
+            }
+        }
+
+        for(auto wall : walls)
+        {
+            if(wall.x() == candy.x() && wall.y() == candy.y())
+            {
+                candyclear = false;
+                candy = Candy(1+rand()%(WIDTH-2), 1+rand()%(HEIGHT-2));
+            }
+        }
+    }while(!candyclear);
 }
 
 void Game::process_keyboard_input(void) {
