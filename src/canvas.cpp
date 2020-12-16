@@ -9,8 +9,8 @@ Canvas::Canvas(void)
 
 void Canvas::clear(void) 
 {
-  for (int x = 0; x < WIDTH; x++) {
-    for (int y = 0; y < HEIGHT; y++) {
+  for (unsigned int x = 0; x < WIDTH; x++) {
+    for (unsigned int y = 0; y < HEIGHT; y++) {
       screen[x][y] = ' ';
     }
   }
@@ -23,8 +23,8 @@ void Canvas::draw_symbol(int x, int y, char symbol)
 
 void Canvas::output_to_terminal(void) {
   system("clear");
-  for (int y = 0; y < HEIGHT; y++) {
-    for (int x = 0; x < WIDTH; x++) {
+  for (unsigned int y = 0; y < HEIGHT; y++) {
+    for (unsigned int x = 0; x < WIDTH; x++) {
       std::cout << screen[x][y];
     }
     std::cout << std::endl;

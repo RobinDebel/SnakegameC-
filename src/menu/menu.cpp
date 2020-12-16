@@ -77,6 +77,7 @@ void Menu::keyInput(void)
             updateMenu();
             fullscore = false;
          break;
+         default: break;
 
     }
 }
@@ -222,7 +223,7 @@ void Menu::showSettingsMenu(void)
 
 void Menu::showHighscoreMenu(void)
 {
-    count = 0;
+    unsigned int count = 0;
     stringhelper.printFullLine();
     stringhelper.printEmptyLine();
     if(!fullscore)

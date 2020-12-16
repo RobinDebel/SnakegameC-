@@ -158,6 +158,7 @@ void Game::process_keyboard_input(void) {
     case Controller::Key::UP: snake.up(); break;
     case Controller::Key::LEFT: snake.left(); break;
     case Controller::Key::RIGHT: snake.right(); break;
+    default: break;
   }
 }
 
