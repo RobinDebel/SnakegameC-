@@ -32,6 +32,7 @@ class Game {
     void tailupdate(void);
     void addpiece_tail(void);
     void deletelast_tail(void);
+    void get_playfield(void);
     
     private:
     void ask_username(void);

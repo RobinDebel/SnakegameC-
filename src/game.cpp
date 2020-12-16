@@ -19,16 +19,24 @@ Game::Game(void)
 
 void Game::create_walls(void)
 {
-    for(int y = 0; y < HEIGHT; y++)
+    if(false)
     {
-        for(int x = 0; x < WIDTH; x++)
+        for(int y = 0; y < HEIGHT; y++)
         {
-            if (x==0 || y==0 || x == WIDTH -1 || y == HEIGHT -1 )
+            for(int x = 0; x < WIDTH; x++)
             {
-                walls.push_back(Wall(x,y));
+                if (x==0 || y==0 || x == WIDTH -1 || y == HEIGHT -1 )
+                {
+                    walls.push_back(Wall(x,y));
+                }
             }
         }
     }
+    else
+    {
+        get_playfield();
+    }
+
 }
 
 void Game::create_candy(void)
@@ -212,4 +220,24 @@ void Game::ask_username(void)
     stringhelper.printFullLine();
     std::cout << "\n        Nickname: ";
     std::cin >> username;
+}
+
+void Game::get_playfield(void)
+{
+    walls.clear();
+    std::ifstream file;
+    file.open("playingfield.txt");
+    std::string input;
+    int line = 0;
+    while (std::getline(file, input))
+    {
+        for(int i=0; i < WIDTH; i++)
+        {
+            if(input.at(i) == '#')
+            {
+                walls.push_back(Wall(i,line));
+            }
+        }
+        line++;
+    }
 }
