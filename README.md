@@ -88,5 +88,4 @@ When editing the playing field you need to make sure the dimensions are correct!
 Standard it needs to be 60 characters wide and a height of 30.  
 Make sure to not putt a wall in the direct middle of the playing field or to the left of it.
 
-
 ![Custom map](img/custommap.png)
