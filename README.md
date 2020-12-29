@@ -39,7 +39,7 @@ To run the game:
 Snakegame
 ```
 
-This should bring you to the main menu of the game were you can navigate using the arrow up and down key and the enter key.
+This will bring you to the main menu of the game were you can navigate using the arrow up and down key and the enter key.
 
 ## Screenshots
 
