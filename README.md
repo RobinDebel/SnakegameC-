@@ -22,3 +22,53 @@ Extra could be a map editor to create maps.
 - Provide a decent README explaining your project, how it is structured, what fancy techniques you used, how someone can build your app and how to run it. Also add a couple of screenshots in your README off how your app looks.
 - A makefile so the user only needs to use `make` to build your app.
 - Check if your application runs on other systems (Windows vs Linux). If not, no problem, but make sure to document this inside your README.
+
+## Screenshots
+
+### Main menu
+
+![mainmenu](img/mainmenu.png)
+
+### Instructions
+
+![instructions](img/instructions.png)
+
+### Highscores
+
+The scores get sorted from highest to lowest.
+
+![instructions](img/scoreboardsmall.png)
+
+When pressing the arrow up key you get the full scoreboard:
+
+![instructions](img/scoreboardfull.png)
+
+### Settings
+
+You can choose to use a standard map or the user created map:
+
+![settings](img/settings.png)
+
+### Playingfield
+
+When playing with the standard map:
+
+![game](img/game.png)
+
+When playing with custom map:
+
+![game custom map](img/gamecustom.png)
+
+### Game over screen
+
+![Game Over](img/gameover.png)
+
+## Making a custom map!
+
+To create a custom map you need to edit the playingfield.txt file.  
+When editing the playing field you need to make sure the dimensions are correct!  
+Standard it needs to be 60 characters wide and a height of 30.  
+Make sure to not putt a wall in the direct middle of the playing field or to the left of it.
+
+
+![Custom map](img/custommap.png)
