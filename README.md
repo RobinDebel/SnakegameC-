@@ -33,7 +33,7 @@ To compile enter the following in bash :
 make
 ```
 
-To run the game enter:
+To run the game:
 
 ```bash
 Snakegame
