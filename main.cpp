@@ -1,7 +1,4 @@
 #include <iostream>
-
-
-
 #include"src/menu/menu.h"
 
 int main(){
